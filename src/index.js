@@ -42,7 +42,7 @@ fetchBreeds()
 	.catch(() => {
 		Notiflix.Notify.failure(refs.error.textContent);
 		refs.error.style.display = 'block';
-		refs.loader.style.display = 'none';
+		refs.loader.style.display = 'block';
 	});
 
 function onChange(e) {
@@ -54,11 +54,15 @@ function onChange(e) {
 	fetchCatByBreed(targetId)
 		.then(({ breeds, url }) => {
 			createMarkup(breeds[0], url);
+			refs.catInfo.style.display = 'flex';
+			refs.catInfo.style.gap = '14px'		
+			refs.loader.style.display = 'none';
 		})
 		.catch(() => {
 			Notiflix.Notify.failure(refs.error.textContent);
 			refs.error.style.display = 'block';
 			refs.loader.style.display = 'none';
+			
 		});
 }
 
